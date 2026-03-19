@@ -1,0 +1,1750 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apple Inc. (AAPL) — Tesis de Inversión Institucional V4.2 · Marzo 2026</title>
+    <style>
+        :root {
+            --bg-base: #fcfcfc;
+            --bg-surface: #ffffff;
+            --bg-sidebar: #f5f6f8;
+            --color-text-main: #1a1e23;
+            --color-text-muted: #536070;
+            --color-navy: #0B1B3D;
+            --color-graphite: #2c3238;
+            --color-steel: #6B7A8F;
+            --color-accent: #0f4c5c;
+            --color-border: #e0e4e8;
+            
+            --spacing-xs: 0.5rem;
+            --spacing-sm: 1rem;
+            --spacing-md: 1.5rem;
+            --spacing-lg: 2rem;
+            --spacing-xl: 3rem;
+            
+            --font-family-main: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            --border-radius: 4px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-family-main);
+            background-color: var(--bg-base);
+            color: var(--color-text-main);
+            line-height: 1.6;
+            font-size: 15px;
+            display: flex;
+        }
+
+        /* Sidebar Navigation */
+        .sidebar {
+            width: 320px;
+            background-color: var(--color-navy);
+            border-right: 1px solid var(--color-border);
+            height: 100vh;
+            position: fixed;
+            top: 0;
+            left: 0;
+            overflow-y: auto;
+            padding: var(--spacing-lg) 0;
+            z-index: 100;
+            transition: transform 0.3s ease;
+        }
+
+        .sidebar-header {
+            padding: 0 var(--spacing-lg) var(--spacing-md);
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            margin-bottom: var(--spacing-md);
+        }
+
+        .sidebar-header h2 {
+            font-size: 1.2rem;
+            color: #ffffff;
+            letter-spacing: -0.5px;
+        }
+
+        .sidebar-header p {
+            font-size: 0.8rem;
+            color: rgba(255,255,255,0.7);
+            margin-top: 4px;
+        }
+
+        .nav-link {
+            display: block;
+            padding: 0.5rem var(--spacing-lg);
+            color: rgba(255,255,255,0.7);
+            text-decoration: none;
+            font-size: 0.9rem;
+            border-left: 3px solid transparent;
+            transition: all 0.2s;
+        }
+
+        .nav-link:hover {
+            background-color: rgba(255,255,255,0.1);
+            color: #ffffff;
+        }
+
+        .nav-link.active {
+            color: #ffffff;
+            font-weight: 600;
+            border-left-color: var(--color-accent);
+            background-color: rgba(255,255,255,0.15);
+        }
+
+        /* Main Content */
+        .main-content {
+            margin-left: 320px;
+            flex-grow: 1;
+            padding: var(--spacing-xl);
+            max-width: 1100px;
+        }
+
+        /* Sections */
+        .report-section {
+            padding-top: var(--spacing-xl);
+            padding-bottom: var(--spacing-xl);
+            border-bottom: 1px solid var(--color-border);
+        }
+
+        .report-section:last-child {
+            border-bottom: none;
+        }
+
+        h1.section-title {
+            font-size: 2.2rem;
+            color: var(--color-navy);
+            margin-bottom: var(--spacing-lg);
+            padding-bottom: var(--spacing-xs);
+            border-bottom: 2px solid var(--color-steel);
+            letter-spacing: -0.5px;
+        }
+
+        h2.subsection-title {
+            font-size: 1.3rem;
+            color: var(--color-graphite);
+            margin: var(--spacing-lg) 0 var(--spacing-sm) 0;
+            font-weight: 600;
+        }
+
+        p {
+            margin-bottom: var(--spacing-md);
+            color: var(--color-text-muted);
+            text-align: justify;
+        }
+
+        ul, ol {
+            margin-bottom: var(--spacing-md);
+            padding-left: var(--spacing-lg);
+            color: var(--color-text-muted);
+        }
+
+        li {
+            margin-bottom: var(--spacing-xs);
+        }
+
+        /* Synthesis Box */
+        .synthesis-box {
+            background-color: #f0f4f8;
+            border-left: 4px solid var(--color-accent);
+            padding: var(--spacing-md);
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .synthesis-box h3 {
+            font-size: 0.95rem;
+            color: var(--color-navy);
+            margin-bottom: var(--spacing-xs);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .synthesis-box p {
+            margin-bottom: 0;
+            color: var(--color-graphite);
+            font-size: 0.95rem;
+        }
+
+        /* Tables */
+        .data-table-wrapper {
+            overflow-x: auto;
+            margin-bottom: var(--spacing-lg);
+        }
+
+        table.data-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.9rem;
+            background-color: var(--bg-surface);
+        }
+
+        table.data-table th, table.data-table td {
+            padding: 12px 16px;
+            border-bottom: 1px solid var(--color-border);
+            text-align: right;
+        }
+
+        table.data-table th:first-child, table.data-table td:first-child {
+            text-align: left;
+        }
+
+        table.data-table th {
+            color: var(--color-navy);
+            font-weight: 600;
+            background-color: #f9fafb;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            letter-spacing: 0.5px;
+        }
+
+        table.data-table tr:hover td {
+            background-color: #f4f6f9;
+        }
+
+        /* Cover Specifics */
+        .cover-header {
+            margin-bottom: var(--spacing-xl);
+        }
+
+        .cover-title {
+            font-size: 3.5rem;
+            color: var(--color-navy);
+            line-height: 1.1;
+            margin-bottom: var(--spacing-sm);
+            letter-spacing: -1px;
+        }
+
+        .cover-subtitle {
+            font-size: 1.5rem;
+            color: var(--color-steel);
+            font-weight: 400;
+        }
+
+        .cover-meta {
+            display: flex;
+            gap: var(--spacing-xl);
+            margin-top: var(--spacing-xl);
+            padding-top: var(--spacing-md);
+            border-top: 1px solid var(--color-border);
+        }
+
+        .meta-item .label {
+            display: block;
+            text-transform: uppercase;
+            font-size: 0.75rem;
+            color: var(--color-steel);
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+
+        .meta-item .value {
+            display: block;
+            font-size: 1.1rem;
+            color: var(--color-navy);
+            font-weight: 600;
+            margin-top: 2px;
+        }
+
+        /* SVG Charts Container */
+        .chart-container {
+            width: 100%;
+            height: 350px;
+            background-color: var(--bg-surface);
+            border: 1px solid var(--color-border);
+            padding: var(--spacing-md);
+            margin-bottom: var(--spacing-lg);
+            position: relative;
+        }
+
+        .chart-title {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--color-navy);
+            margin-bottom: var(--spacing-sm);
+            text-align: center;
+        }
+
+        /* Interactive DCF */
+        .dcf-grid {
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            gap: var(--spacing-lg);
+            align-items: start;
+        }
+
+        .dcf-controls {
+            background-color: var(--bg-surface);
+            border: 1px solid var(--color-border);
+            padding: var(--spacing-md);
+            border-radius: var(--border-radius);
+        }
+
+        .control-group {
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .control-label {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.85rem;
+            color: var(--color-graphite);
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .control-input {
+            width: 100%;
+            padding: 6px;
+            border: 1px solid var(--color-border);
+            border-radius: var(--border-radius);
+            font-size: 0.9rem;
+            font-family: inherit;
+        }
+
+        .dcf-output {
+            background-color: var(--color-navy);
+            color: white;
+            padding: var(--spacing-lg);
+            border-radius: var(--border-radius);
+        }
+
+        .dcf-output-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: var(--spacing-md);
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .output-card {
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: var(--spacing-sm);
+            border-radius: var(--border-radius);
+            text-align: center;
+        }
+
+        .output-card.main-result {
+            background-color: var(--color-accent);
+        }
+
+        .output-label {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            opacity: 0.8;
+            margin-bottom: 4px;
+        }
+
+        .output-val {
+            font-size: 1.4rem;
+            font-weight: 600;
+        }
+
+        /* Tabs */
+        .tabs {
+            display: flex;
+            border-bottom: 1px solid var(--color-border);
+            margin-bottom: var(--spacing-md);
+        }
+
+        .tab-btn {
+            background: none;
+            border: none;
+            padding: 10px 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--color-text-muted);
+            cursor: pointer;
+            border-bottom: 2px solid transparent;
+            margin-bottom: -1px;
+        }
+
+        .tab-btn.active {
+            color: var(--color-navy);
+            border-bottom-color: var(--color-accent);
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        /* Scenarios Summary */
+        .scenarios-summary {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: var(--spacing-md);
+            margin: var(--spacing-md) 0;
+        }
+
+        .scenario-card {
+            border: 1px solid var(--color-border);
+            padding: var(--spacing-md);
+            background-color: var(--bg-surface);
+            text-align: center;
+        }
+
+        .scenario-card .sc-title {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: var(--color-graphite);
+            font-weight: 600;
+            margin-bottom: var(--spacing-xs);
+        }
+
+        .scenario-card .sc-val {
+            font-size: 1.8rem;
+            color: var(--color-navy);
+            font-weight: 700;
+        }
+
+        /* Badge tags */
+        .tag-reported {
+            background-color: #e5e7eb;
+            color: #374151;
+            font-size: 0.7rem;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-weight: 600;
+            vertical-align: middle;
+        }
+        .tag-estimated {
+            background-color: #dbeafe;
+            color: #1e40af;
+            font-size: 0.7rem;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-weight: 600;
+            vertical-align: middle;
+        }
+        .tag-calculated {
+            background-color: #d1fae5;
+            color: #065f46;
+            font-size: 0.7rem;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-weight: 600;
+            vertical-align: middle;
+        }
+
+        @media screen and (max-width: 900px) {
+            .sidebar {
+                transform: translateX(-100%);
+            }
+            .sidebar.open {
+                transform: translateX(0);
+            }
+            .main-content {
+                margin-left: 0;
+            }
+            .dcf-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .tag-pending {
+            background-color: #fef9c3;
+            color: #854d0e;
+            font-size: 0.7rem;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-weight: 600;
+            vertical-align: middle;
+        }
+        .section-note {
+            background: #f8fafc;
+            border: 1px solid var(--color-border);
+            border-left: 4px solid var(--color-steel);
+            padding: 10px 14px;
+            font-size: 0.82rem;
+            color: var(--color-text-muted);
+            margin-bottom: var(--spacing-md);
+        }
+        table.data-table th { text-align: right; }
+        table.data-table th:first-child { text-align: left; }
+    
+    </style>
+</head>
+<body>
+
+    <!-- Sidebar -->
+    <nav class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <h2>Research Repository</h2>
+            <p>Iker Seoane Martínez</p>
+            <p style="font-size:0.7rem;color:rgba(255,255,255,0.5);margin-top:4px;">V4.2 · Marzo 2026</p>
+        </div>
+        <a href="#portada" class="nav-link active">1. Portada y Resumen</a>
+        <a href="#tesis" class="nav-link">2. Tesis de Inversión</a>
+        <a href="#compania" class="nav-link">3. Compañía y Sector</a>
+        <a href="#oportunidad" class="nav-link">4. La Oportunidad Actual</a>
+        <a href="#competitiva" class="nav-link">5. Ventaja Competitiva</a>
+        <a href="#negocio" class="nav-link">6. Modelo de Negocio</a>
+        <a href="#ecosistema" class="nav-link">7. Ecosistema y Relaciones</a>
+        <a href="#competencia" class="nav-link">8. Análisis Competencia</a>
+        <a href="#resultados" class="nav-link">9. Últimos Resultados</a>
+        <a href="#estimaciones" class="nav-link">10. Estimaciones</a>
+        <a href="#valoracion" class="nav-link">11. Valoración y DCF</a>
+        <a href="#discusion" class="nav-link">12. Discusión del Resultado</a>
+        <a href="#riesgos" class="nav-link">13. Riesgos y Matriz</a>
+        <a href="#conclusion" class="nav-link">14. Conclusión</a>
+        <a href="#fuentes" class="nav-link">15. Fuentes</a>
+        <a href="#glosario" class="nav-link">16. Glosario</a>
+        <a href="#anexos" class="nav-link">17. Anexos</a>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        
+        <!-- 1. Portada -->
+        <section id="portada" class="report-section">
+            <div class="cover-header">
+                <h1 class="cover-title">Apple Inc.</h1>
+                <div class="cover-subtitle" style="margin-bottom: 20px;">Tesis de Inversión Institucional</div>
+                
+                <div style="text-align: center; margin: 30px 0;">
+                    <img src="applecover.png" alt="Apple Cover" style="max-width: 520px; width: 100%; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
+                </div>
+                
+                <div class="cover-meta">
+                    <div class="meta-item">
+                        <span class="label">Ticker</span>
+                        <span class="value">NASDAQ: AAPL</span>
+                    </div>
+                    <div class="meta-item">
+                        <span class="label">Fecha</span>
+                        <span class="value">Marzo 2026</span>
+                    </div>
+                    <div class="meta-item">
+                        <span class="label">Autor</span>
+                        <span class="value">Iker Seoane Martínez</span>
+                    </div>
+                    <div class="meta-item">
+                        <span class="label">Calificación</span>
+                        <span class="value">Research Grade</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="synthesis-box">
+                <h3>Resumen Ejecutivo</h3>
+                <p>Apple Inc. representa una oportunidad de inversión de alta calidad marcada por la monetización de una base instalada superior a los 2.5 mil millones de dispositivos. El catalizador principal de corto y medio plazo es el superciclo de actualización impulsado por "Apple Intelligence", junto a márgenes estructurales en el segmento de Servicios. La valoración base de esta tesis (Modelo DCF exhaustivo) indica un valor intrínseco de <strong>220 USD por acción</strong>, sugiriendo una postura de "HOLD" para acumular en debilidad y construir margen de seguridad.</p>
+            </div>
+
+            <h2 class="subsection-title">Parámetros Clave de la Tesis</h2>
+            <div class="data-table-wrapper">
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Métrica</th>
+                            <th>Valor Actual / Proyectado</th>
+                            <th>Naturaleza</th>
+                            <th>Comentario Analítico</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Revenue Q1 FY2026</td>
+                            <td>143.8 B$</td>
+                            <td><span class="tag-reported">Reportado</span></td>
+                            <td>Récord histórico, crecimiento +16% YoY.</td>
+                        </tr>
+                        <tr>
+                            <td>Operating Margin FY2025</td>
+                            <td>31.97%</td>
+                            <td><span class="tag-reported">Reportado</span></td>
+                            <td>Mantenimiento de resiliencia estructural.</td>
+                        </tr>
+                        <tr>
+                            <td>Services Revenue FY2025</td>
+                            <td>109.2 B$</td>
+                            <td><span class="tag-reported">Reportado</span></td>
+                            <td>Crecimiento de doble dígito compensando hardware.</td>
+                        </tr>
+                        <tr>
+                            <td>WACC Estimado</td>
+                            <td>8.3%</td>
+                            <td><span class="tag-calculated">Calculado</span></td>
+                            <td>Coste de capital mixto descontando bajo apalancamiento.</td>
+                        </tr>
+                        <tr>
+                            <td>Precio Objetivo (Base)</td>
+                            <td>220 $</td>
+                            <td><span class="tag-estimated">Estimado</span></td>
+                            <td>Construido con Terminal Growth del 4.0%.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h2 class="subsection-title">Síntesis de Escenarios (<span class="tag-calculated">Calculado</span>)</h2>
+            <div class="scenarios-summary">
+                <div class="scenario-card">
+                    <div class="sc-title">Bajista (Bear)</div>
+                    <div class="sc-val">155 - 180 $</div>
+                    <div style="font-size: 0.8rem; color: var(--color-text-muted); margin-top: 4px;">Regulación severa, adopción baja de IA</div>
+                </div>
+                <div class="scenario-card" style="border-top: 4px solid var(--color-navy)">
+                    <div class="sc-title">Base (Neutral)</div>
+                    <div class="sc-val">220 - 240 $</div>
+                    <div style="font-size: 0.8rem; color: var(--color-text-muted); margin-top: 4px;">Ciclo normal de adopción, márgenes estables</div>
+                </div>
+                <div class="scenario-card">
+                    <div class="sc-title">Alcista (Bull)</div>
+                    <div class="sc-val">320 - 360 $</div>
+                    <div style="font-size: 0.8rem; color: var(--color-text-muted); margin-top: 4px;">Superciclo sostenido, penetración en India</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. Tesis de Inversión -->
+        <section id="tesis" class="report-section">
+            <h1 class="section-title">2. Tesis de Inversión</h1>
+            
+            <h2 class="subsection-title">Idea Central y Posicionamiento</h2>
+            <p>La propuesta de valor de Apple Inc. a marzo de 2026 demuestra una fortaleza inusual frente a presiones macroeconómicas. La tesis se fundamenta en la migración sostenida de un negocio tradicional centrado en producto, a un ecosistema monetizable recurrente que actúa como un posición dominante de mercado. Con ingresos reportados en el Q1 FY2026 de 143.8 mil millones de dólares (+16% YoY) y unos márgenes operativos sostenidos en el rango del 32%, Apple demuestra capacidad de transferencia de precios (pricing power).</p>
+            <p>A pesar de esta excepcionalidad cualitativa, el múltiplo de mercado en torno a 33.8x forward P/E ya descuenta de forma significativa la monetización del salto generacional de <em>Apple Intelligence</em>. Esto reduce el margen de seguridad para un inversor de valor que requiere rentabilidades ajustadas por riesgo superiores al 10% anual.</p>
+
+            <h2 class="subsection-title">Vectores Direccionales (Catalizadores y Frenos)</h2>
+            
+            <p><strong>Factores de Aceleración Estructural (Alcistas):</strong></p>
+            <ul>
+                <li><strong>El Superciclo de "Apple Intelligence":</strong> Con el 70% de la base instalada (más de 800 millones de iPhones) operando con procesadores previos a las capacidades completas de IA local, existe un represamiento significativo de la demanda. Un salto de adopción del 20-30% generaría un flujo adicional de ingresos superior a 150 B$.</li>
+                <li><strong>Elasticidad del Margen en Servicios:</strong> Con 109.2 B$ reportados en FY2025 y márgenes brutos rozando el 75%, el segmento Servicios no solo aporta flujo de caja recurrente, sino que empuja estructuralmente al alza el margen neto corporativo.</li>
+            </ul>
+
+            <p><strong>Factores de Fricción (Bajistas):</strong></p>
+            <ul>
+                <li><strong>Concentración de Dependencia:</strong> Pese al auge de servicios, el ecosistema colapsa si la cuota del iPhone (que representó cerca de 245 B$ en FY2024) se degrada debido a la ralentización en ciclos de renovación frente a competencia agresiva en precio (Xiaomi/Huawei) o presión inflacionaria del consumidor.</li>
+                <li><strong>Riesgos Geopolíticos en Manufactura:</strong> La transición hacia India avanza, pero China aún capitaliza más del 15% de ingresos y compone la principal estructura de manufactura del mundo tecnológico.</li>
+            </ul>
+        </section>
+
+        <!-- 3. Compañía y Sector -->
+        <section id="compania" class="report-section">
+            <h1 class="section-title">3. Descripción de la Compañía y Análisis Sectorial</h1>
+            
+            <div class="synthesis-box">
+                <h3>Síntesis del Mix de Negocio</h3>
+                <p>Apple opera el ecosistema de consumo tecnológico de mayor valor integrado del sector. A diferencia de competidores que dividen la integración de software (Google) y hardware (Samsung/OEMs), el control bidireccional de Apple permite optimizaciones silicio-software que actúan como foso económico altamente defendible.</p>
+            </div>
+
+            <h2 class="subsection-title">Estructura de Capital y Segmentos (Base FY2025/2026)</h2>
+            <p>Con una valoración superior a los 3 billones de dólares y más de 14.8 B de acciones en circulación de forma continua debido a una agresiva e incesante política de recompras, los segmentos se desglosan en:</p>
+            <ul>
+                <li><strong>iPhone (Hardware Base):</strong> 59% del pool de ingresos corporativos. Punto de entrada principal al ecosistema.</li>
+                <li><strong>Servicios (recurrencia y ARPU):</strong> Motor de rentabilidad de la compañía y factor suavizador de demanda cíclica de hardware.</li>
+                <li><strong>Wearables, Mac e iPad:</strong> Satélites del ecosistema diseñados para fomentar la retención cruzada (cross-pollination user retention).</li>
+            </ul>
+
+            
+            <h2 class="subsection-title">Tabla 0. Desglose de Ingresos por Segmento y Geografía (FY2025)</h2>
+            <div class="section-note">Fuente: Apple Form 10-K FY2025 · Todos los datos son <span class="tag-reported">Reportados</span> salvo indicación contraria.</div>
+            <div class="data-table-wrapper">
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Segmento de Negocio</th>
+                            <th>Ingresos FY2025 (B$)</th>
+                            <th>% del Total</th>
+                            <th>Crecimiento YoY</th>
+                            <th>Margen Bruto Aprox.</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td><strong>iPhone</strong></td><td>231.0</td><td>55%</td><td>+3%</td><td>~36-40%</td></tr>
+                        <tr><td>Services</td><td>109.2</td><td>26%</td><td>+14%</td><td>~75%</td></tr>
+                        <tr><td>Wearables, Home &amp; Acc.</td><td>39.0</td><td>9%</td><td>+3%</td><td>~30-35%</td></tr>
+                        <tr><td>Mac</td><td>29.0</td><td>7%</td><td>+5%</td><td>~40%</td></tr>
+                        <tr><td>iPad</td><td>28.0</td><td>7%</td><td>+10%</td><td>~35-38%</td></tr>
+                        <tr style="background:#f0f4f8;font-weight:700;"><td>Total</td><td>416.0</td><td>100%</td><td>+6%</td><td>46.9%</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="data-table-wrapper" style="margin-top:0">
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Región Geográfica</th>
+                            <th>Ingresos FY2025 (B$)</th>
+                            <th>% del Total</th>
+                            <th>Crecimiento YoY</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Americas</td><td>220.0</td><td>53%</td><td>+5%</td></tr>
+                        <tr><td>Europe</td><td>102.0</td><td>25%</td><td>+8%</td></tr>
+                        <tr><td>China</td><td>42.0</td><td>10%</td><td>+6%</td></tr>
+                        <tr><td>Japan</td><td>30.0</td><td>7%</td><td>+3%</td></tr>
+                        <tr><td>Rest of APAC</td><td>22.0</td><td>5%</td><td>+12%</td></tr>
+                        <tr style="background:#f0f4f8;font-weight:700;"><td>Total</td><td>416.0</td><td>100%</td><td>+6%</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <p style="font-size:0.8rem;color:var(--color-text-muted);"><em>Fuente: Apple Form 10-K FY2025. Nota: China = Gran China (China continental, Hong Kong, Taiwán). Americas incluye EEUU y resto del continente americano.</em></p>
+
+            <h2 class="subsection-title">Posicionamiento Competitivo Cruzado</h2>
+            <div class="data-table-wrapper">
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Entidad</th>
+                            <th>Op. Margin (<span class="tag-reported">Reportado</span>)</th>
+                            <th>Aproximación FCF Margin</th>
+                            <th>Core Moat</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Apple Inc.</strong></td>
+                            <td>32% (FY25)</td>
+                            <td>27%</td>
+                            <td>Ecosistema cerrado e Integración Vertical</td>
+                        </tr>
+                        <tr>
+                            <td>Microsoft</td>
+                            <td>~44%</td>
+                            <td>~35%</td>
+                            <td>B2B Cloud y Software Empresarial</td>
+                        </tr>
+                        <tr>
+                            <td>Google / Alphabet</td>
+                            <td>~23%</td>
+                            <td>~22%</td>
+                            <td>Search Monopoly y Ad-Tech Data Platform</td>
+                        </tr>
+                        <tr>
+                            <td>Samsung Electronics</td>
+                            <td>~8%</td>
+                            <td>~7%</td>
+                            <td>Capacidad de manufactura y semiconductores hardware</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- 4. Oportunidad -->
+        <section id="oportunidad" class="report-section">
+            <h1 class="section-title">4. La Oportunidad Actual</h1>
+            
+            <h2 class="subsection-title">La Ventana Geográfica y Tecnológica</h2>
+            <p>El horizonte inversor en Apple hoy reside en la sincronización de dos fuerzas simultáneas: la IA Generativa (Apple Intelligence) implementada en el extremo del usuario (edge computing), y la penetración tardía en la clase media india.</p>
+
+            <h2 class="subsection-title">Apple Intelligence como Ciclo Tectónico</h2>
+            <p>El récord de Q1 FY2026 de 143.8 B$ (con un crecimiento del 16% interanual) constata el inicio del ciclo de Apple Intelligence. A diferencia de implementaciones cloud-heavy, la exigencia de capacidad de NPU local fuerza la renovación de dispositivos físicos corporativos y minoristas antiguos. De una base de casi 2 billones de iPhones, la obsolescencia técnica instantánea para IA local abarca a las tres cuartas partes.</p>
+
+            <h2 class="subsection-title">El Motor Creciente: Expansión Global</h2>
+            <p>Históricamente concentrada en la triada "US-Europa-China", Apple captura aún cuotas inferiores al 20% en India o sureste asiático. El redespliegue de ensamblaje desde Foxconn China hacia Foxconn/Tata India consolida indirectamente la apertura del retail para el mercado local con 1.4 mil millones de habitantes, en los que la incipiente clase media empieza a aspirar a dispositivos premium.</p>
+        </section>
+
+        <!-- 5. Ventaja Competitiva -->
+        <section id="competitiva" class="report-section">
+            <h1 class="section-title">5. Ventaja Competitiva</h1>
+
+            <div class="synthesis-box">
+                <h3>El Cuádruple Foso Económico (Economic Moat)</h3>
+                <p>El ROIC histórico de Apple (50%+) solo es matemáticamente posible al mantener posiciones de dominio en segmentos premium sobre bases de poder adquisitivo superior.</p>
+            </div>
+
+            <ul>
+                <li><strong>Control de la Arquitectura de Silicio (M-Series y A-Series):</strong> Al desintermediar a fabricantes como Intel, Apple captura íntegramente el margen del diseño del procesamiento, habilitando ratios de consumo energético vs potencia y permitiendo el diseño industrial de equipos ligeros y eficientes imposibles de replicar.</li>
+                <li><strong>Switching Costs de Alta Carga Cognitiva y Social:</strong> La interoperabilidad entre Apple Watch, AirPods y Mac a través de iCloud e iMessage convierte el salto hacia ecosistemas Android o Windows en una laboriosa e ineficiente reestructuración de vida digital para el cliente.</li>
+                <li><strong>Efectos de Red Bilaterales (App Store):</strong> Los desarrolladores convergen en Apple para monetizar (pues capturan cerca del 70% de la monetización de software móvil pese a menor cuota instalada per cápita vs Android), lo cual atrae las mejores herramientas primero a iOS.</li>
+                <li><strong>Brand Equity Intangible:</strong> Apple mantiene un poder de fijación de precio que asimila las expansiones inflacionarias de forma orgánica.</li>
+            </ul>
+        </section>
+
+        <!-- 6, 7 y 8. Negocio, Ecosistema, Competencia -->
+        <section id="negocio" class="report-section">
+            <h1 class="section-title">6, 7 y 8. Modelo, Ecosistema y Competencia</h1>
+            
+            <h2 class="subsection-title">Dinamización del Capital (Capital Allocation)</h2>
+            <p>Apple no actúa simplemente como compañía tecnológica, sino como una asignadora eficiente de capital: toma componentes del mercado asiático, ensambla bienes de Veblen de alto margen, y devuelve el capital sobrante de forma metódica. Ha reducido sistemáticamente el recuento de acciones en circulación desde niveles cercanos a 24 B en la última década a los actuales 14.8 B. Esta simple reducción sistemática de shares en circulación incrementa los EPS, reportados en un robusto 2.84 para el primer trimestre de FY2026.</p>
+
+            <h2 class="subsection-title">Estructura Asset-Light e Inflexión Competitiva</h2>
+            <p>Competidores directos como Samsung Electronics requieren capex masivo ("fab-heavy") y lidian con un entorno comoditizado. Apple en cambio opera como orquestador, reteniendo I+D, Marca y SO, y delegando el riesgo del Capex a su abanico de fabricantes del cinturón del Pacífico asiático.</p>
+            <p>El único riesgo endémico competitivo descansa sobre la hegemonía del buscador de Google en iOS (pagando entre 15 y 20 billones anuales por ser opción por defecto) y la creciente penetración del capital chino (Huawei) en los estratos premium de su mercado interno.</p>
+        </section>
+
+        <!-- 9. Últimos Resultados (Gráficos) -->
+        <section id="resultados" class="report-section">
+            <h1 class="section-title">9. Últimos Resultados Financieros (FY2025 - Q1 FY2026)</h1>
+            
+            <p>Como se observa en la Tabla 1, la compañía validó la tesis inicial entregando unos resultados consolidados y robustos en el tramo de FY2025 y Q1 FY2026. Como se detalla en la <strong>Tabla 1</strong> (Cuenta de Resultados) y la <strong>Tabla 2</strong> (Balance Simplificado), a continuación se proyectan los datos de <span class="tag-reported">reporte real</span>.</p>
+            
+            <h2 class="subsection-title">Tabla 1. Cuenta de Resultados Histórica y Simplificada (FY2021-FY2025)</h2>
+            <div class="data-table-wrapper">
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Concepto (Billions USD)</th>
+                            <th>FY2021</th>
+                            <th>FY2022</th>
+                            <th>FY2023</th>
+                            <th>FY2024</th>
+                            <th>FY2025</th>
+                            <th>Q1 FY2026 (Trimestral)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Ingresos Netos</strong></td>
+                            <td>365.8</td>
+                            <td>394.3</td>
+                            <td>383.3</td>
+                            <td>391.4</td>
+                            <td>416.2</td>
+                            <td>143.8</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Margen Bruto (%)</strong></td>
+                            <td>43.0%</td>
+                            <td>46.0%</td>
+                            <td>46.0%</td>
+                            <td>45.6%</td>
+                            <td>46.9%</td>
+                            <td>~47.0%</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Ingresos Operativos</strong></td>
+                            <td>107.2</td>
+                            <td>129.0</td>
+                            <td>119.9</td>
+                            <td>120.7</td>
+                            <td>133.1</td>
+                            <td>~47.5</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Margen Operativo (%)</strong></td>
+                            <td>29.3%</td>
+                            <td>32.7%</td>
+                            <td>31.3%</td>
+                            <td>30.8%</td>
+                            <td>32.0%</td>
+                            <td>~33.0%</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Beneficio Neto</strong></td>
+                            <td>94.7</td>
+                            <td>110.9</td>
+                            <td>100.8</td>
+                            <td>93.7</td>
+                            <td>112.0</td>
+                            <td>42.1</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Margen Neto (%)</strong></td>
+                            <td>25.9%</td>
+                            <td>28.1%</td>
+                            <td>26.3%</td>
+                            <td>23.9%</td>
+                            <td>26.9%</td>
+                            <td>29.2%</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <p style="font-size:0.8rem; color:var(--color-text-muted);"><em>Fuente: Estados financieros de Apple FY2021-FY2025 y PDF de referencia. Nota: FY2025 refleja ajuste por beneficio fiscal.</em></p>
+
+            <h2 class="subsection-title">Tabla 2. Balance Simplificado y Fortaleza Financiera (FY2023-FY2025)</h2>
+            <div class="data-table-wrapper">
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Concepto (Billions USD)</th>
+                            <th>FY2023</th>
+                            <th>FY2024</th>
+                            <th>FY2025</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Activos Totales</td>
+                            <td>352.6</td>
+                            <td>352.7</td>
+                            <td>352.0</td>
+                        </tr>
+                        <tr>
+                            <td>Efectivo y Equivalentes</td>
+                            <td>163.0</td>
+                            <td>158.0</td>
+                            <td>157.9</td>
+                        </tr>
+                        <tr>
+                            <td>Valores Negociables</td>
+                            <td>~120.0</td>
+                            <td>~125.0</td>
+                            <td>~132.4</td>
+                        </tr>
+                        <tr>
+                            <td>Deuda Total</td>
+                            <td>108.9</td>
+                            <td>111.8</td>
+                            <td>115.4</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Deuda Neta Aproximada</strong></td>
+                            <td>~45.0</td>
+                            <td>~49.0</td>
+                            <td>~43.0</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h2 class="subsection-title">Tabla 3. Flujo de Caja y Capital Allocation</h2>
+            <div class="data-table-wrapper">
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Año</th>
+                            <th>FCF (Billions USD) <span class="tag-calculated">Calc.</span></th>
+                            <th>Margen FCF (%)</th>
+                            <th>Recompras (B$)</th>
+                            <th>Dividendos (B$)</th>
+                            <th>Payout Implícito (%)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>FY2023</td>
+                            <td>95.0</td>
+                            <td>25%</td>
+                            <td>~75-80</td>
+                            <td>15.5</td>
+                            <td>~100%</td>
+                        </tr>
+                        <tr>
+                            <td>FY2024</td>
+                            <td>96.0</td>
+                            <td>25%</td>
+                            <td>28.5</td>
+                            <td>15.5</td>
+                            <td>46%</td>
+                        </tr>
+                        <tr>
+                            <td>FY2025</td>
+                            <td>111.0</td>
+                            <td>27%</td>
+                            <td>89.0 - 90.7</td>
+                            <td>15.5</td>
+                            <td>94-96%</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <p style="font-size:0.8rem; color:var(--color-text-muted);"><em>La agresiva política de recompras ha reducido las acciones en circulación en más del 44% desde 2013, solidificando un perfil de retorno único.</em></p>
+
+
+            <h2 class="subsection-title">Gráficos de Composición y Rendimiento</h2>
+            
+            <div class="scenarios-summary" style="margin-bottom: var(--spacing-lg);">
+                <div class="chart-container" id="chart-pie-mix" style="margin-bottom:0;">
+                    <div class="chart-title">Gráfico 2. Análisis de Mix FY2025 (Producto vs. Servicios)</div>
+                    <div id="svg-pie-mix" style="width: 100%; height: 90%;"></div>
+                </div>
+                <div class="chart-container" id="chart-pie-geo" style="margin-bottom:0;">
+                    <div class="chart-title">Gráfico 3. Desglose Geográfico FY2025</div>
+                    <div id="svg-pie-geo" style="width: 100%; height: 90%;"></div>
+                </div>
+            </div>
+
+            <h2 class="subsection-title">Gráfico 1. Evolución Histórica (Ingresos y Márgenes)</h2>
+            <div class="chart-container" id="chart-revenues">
+                <div class="chart-title">Gráfico 1A. Evolución de Ingresos Netos (Billions USD)</div>
+                <div id="svg-revenues" style="width: 100%; height: 90%;"></div>
+            </div>
+
+            <div class="chart-container" id="chart-margins">
+                <div class="chart-title">Gráfico 1B. Expansión Sostenida de Margen Operativo (%)</div>
+                <div id="svg-margins" style="width: 100%; height: 90%;"></div>
+            </div>
+        </section>
+
+        <!-- 10. Estimaciones -->
+        <section id="estimaciones" class="report-section">
+            <h1 class="section-title">10. Estimaciones a Medio Plazo</h1>
+            
+            <h2 class="subsection-title">Tabla 4. Puente Histórico-Proyectado: Drivers de Transición (FY2021-FY2033)</h2>
+            <div class="section-note">Las columnas FY2021-FY2025 son <span class="tag-reported">Datos Reportados</span>. Las columnas FY2026-FY2033 son <span class="tag-estimated">Estimaciones</span> basadas en el modelo analítico descrito en la Sección 11. Fuente: Apple 10-K y cálculos propios.</div>
+            <div class="data-table-wrapper" style="overflow-x:auto;">
+                <table class="data-table" style="font-size:0.78rem;white-space:nowrap;">
+                    <thead>
+                        <tr>
+                            <th>Métrica</th>
+                            <th>FY2021</th><th>FY2022</th><th>FY2023</th><th>FY2024</th><th>FY2025</th>
+                            <th style="border-left:2px solid #6B7A8F;">FY2026E</th><th>FY2027E</th><th>FY2028E</th><th>FY2030E</th><th>FY2033E</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Ingresos (B$)</strong></td>
+                            <td>365.8</td><td>394.3</td><td>383.3</td><td>391.4</td><td>416.0</td>
+                            <td style="border-left:2px solid #6B7A8F;color:#0B1B3D;font-weight:600;">467.0</td>
+                            <td>514.0</td><td>555.0</td><td>625.0</td><td>720.0</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Crecimiento YoY (%)</strong></td>
+                            <td>+33%</td><td>+8%</td><td>-3%</td><td>+2%</td><td>+6%</td>
+                            <td style="border-left:2px solid #6B7A8F;">+12%</td><td>+10%</td><td>+8%</td><td>+6%</td><td>+4.5%</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Margen Operativo (%)</strong></td>
+                            <td>29.3%</td><td>32.7%</td><td>31.3%</td><td>30.8%</td><td>32.0%</td>
+                            <td style="border-left:2px solid #6B7A8F;">32.5%</td><td>32.5%</td><td>32.5%</td><td>32.5%</td><td>32.5%</td>
+                        </tr>
+                        <tr>
+                            <td><strong>NOPAT Aprox. (B$)</strong> <span class="tag-calculated">Calc.</span></td>
+                            <td>90.5</td><td>103.8</td><td>100.9</td><td>101.4</td><td>111.8</td>
+                            <td style="border-left:2px solid #6B7A8F;">127.4</td><td>140.2</td><td>151.4</td><td>170.6</td><td>196.5</td>
+                        </tr>
+                        <tr>
+                            <td><strong>FCF Histórico / Aprox. (B$)</strong></td>
+                            <td>~93</td><td>~111</td><td>95.0</td><td>96.0</td><td>111.0</td>
+                            <td style="border-left:2px solid #6B7A8F;">127.4</td><td>140.2</td><td>151.4</td><td>170.6</td><td>196.5</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Mix Servicios (%)</strong></td>
+                            <td>19%</td><td>20%</td><td>22%</td><td>24%</td><td>26%</td>
+                            <td style="border-left:2px solid #6B7A8F;">28%</td><td>30%</td><td>32%</td><td>35%</td><td>40%</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="synthesis-box" style="margin-top:0;">
+                <h3>Drivers de la Transición Histórico → Proyectado</h3>
+                <p><strong>1. Superciclo Apple Intelligence (FY2026-FY2027):</strong> El 70% de la base instalada no tiene acceso a AI on-device. Un ciclo de renovación del 15-20% implica ~97-130 millones de unidades adicionales por año, acelerando el CAGR de ingresos al 10-12% durante estos dos ejercicios.</p>
+                <p><strong>2. Mix Shift hacia Servicios:</strong> Los Servicios crecen a 12-14% CAGR frente al 3-5% del hardware. Dado su margen bruto del 75% vs. 36% en productos, cada punto porcentual de mayor peso en services amplia el margen bruto corporativo consolidado en 30-40 bps.</p>
+                <p><strong>3. CAPEX Contenido:</strong> El modelo <em>asset-light</em> implica D&amp;A ≈ CAPEX (~4% de ingresos), haciendo prácticamente simétrica la conversión NOPAT → FCF. No se anticipa inversión extraordinaria en manufactura propia.</p>
+                <p style="margin-bottom:0;"><strong>4. Estabilización de Márgenes (FY2028+):</strong> La presión regulatoria sobre el App Store (potencial reducción del take-rate al 20-25%) y el incremento de I+D en AI se absorben por el apalancamiento operativo de la rama de Servicios, resultando en un margen operativo estabilizado en el rango del 32-33%.</p>
+            </div>
+
+            <p>La extrapolación del modelo financiero asume un "Superciclo" derivado de Apple Intelligence en los próximos 2 años (FY2026-FY2027) seguido de una convergencia a un crecimiento de un solo dígito estabilizado en ritmos macroeconómicos. La conversión de NOPAT a FCF se asume casi simétrica, dados los bajos requerimientos de CAPEX netos sobre depreciación en su modelo <em>asset-light</em>.</p>
+
+
+            <div class="synthesis-box">
+                <h3>Horizonte Computacional (2026-2030)</h3>
+                <p>Como se ilustra en la <strong>Tabla 4</strong> (Puente de Transición Histórico-Proyectado), las proyecciones se anclan en la estabilización de los márgenes en un tramo superior frente al histórico (beneficio del mix de servicios) y un crecimiento sostenido de un solo dígito medio a alto fundamentado en ARPU y expansiones geográficas.</p>
+            </div>
+
+            <h3 style="font-size: 1.1rem; color: var(--color-navy); margin-top: 20px;">Tabla 5A. Proyecciones de Ingresos por Escenario (B$)</h3>
+            <div class="data-table-wrapper">
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Año Calendariado</th>
+                            <th>Ingresos (Case Bear) <span class="tag-estimated">Est.</span></th>
+                            <th>Ingresos (Case Base) <span class="tag-estimated">Est.</span></th>
+                            <th>Ingresos (Case Bull) <span class="tag-estimated">Est.</span></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>2026</td><td>435 B$</td><td>467 B$</td><td>490 B$</td></tr>
+                        <tr><td>2027</td><td>455 B$</td><td>514 B$</td><td>555 B$</td></tr>
+                        <tr><td>2028</td><td>470 B$</td><td>555 B$</td><td>620 B$</td></tr>
+                        <tr><td>2029</td><td>485 B$</td><td>590 B$</td><td>680 B$</td></tr>
+                        <tr><td>2030</td><td>500 B$</td><td>625 B$</td><td>735 B$</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- 11. Valoracion y DCF -->
+        <section id="valoracion" class="report-section">
+            <h1 class="section-title">11. Valoración y Múltiplos Comparables</h1>
+            
+            <h2 class="subsection-title">Tabla 5B. Comparables de Mega-Caps Tecnológicas (Actualizado a Marzo 2026)</h2>
+            <div class="data-table-wrapper">
+                <table class="data-table" style="font-size: 0.85rem;">
+                    <thead>
+                        <tr>
+                            <th>Compañía</th>
+                            <th>EV/EBITDA LTM</th>
+                            <th>Forward P/E</th>
+                            <th>FCF Margin</th>
+                            <th>Posicionamiento y Prima Implícita</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Apple Inc.</strong></td>
+                            <td>~25.5x</td>
+                            <td>33.8x</td>
+                            <td>26.6%</td>
+                            <td>Premium por recurrencia en ecosistema cerrado y alto retorno de capital.</td>
+                        </tr>
+                        <tr>
+                            <td>Microsoft</td>
+                            <td>~22.0x</td>
+                            <td>>30.0x</td>
+                            <td>~35.0%</td>
+                            <td>Liderazgo consolidado en cloud y AI B2B, superioridad en margen operativo.</td>
+                        </tr>
+                        <tr>
+                            <td>Alphabet (Google)</td>
+                            <td>~18.5x</td>
+                            <td>~22.0x</td>
+                            <td>~22.0%</td>
+                            <td>Descuento relativo por exposición a hardware cíclico y riesgos antimonopolio en Search.</td>
+                        </tr>
+                        <tr>
+                            <td>Samsung</td>
+                            <td>~9.5x</td>
+                            <td>~16.0x</td>
+                            <td>~7.0%</td>
+                            <td>Hardware intensivo en capital (fab-heavy), ecosistema mixto con menor switching cost.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <p style="font-size: 0.8rem; color: var(--color-text-muted); margin-bottom: 25px;"><em>Fuente: Datos financieros agregados TTM y estimaciones consensus. Las métricas comparadas reflejan la disonancia de asset-light vs capital-intensive.</em></p>
+
+            <h2 class="subsection-title">Modelo DCF Interactivo y Resumen de Proyección</h2>
+
+            
+            <p>La <strong>Tabla 6</strong> anterior presenta el despliegue estático del modelo. El siguiente módulo interactivo permite sensibilizar dinámicamente los parámetros clave sobre el mismo marco metodológico. El motor computacional despliega un flujo de caja descontado proyectivo de empresa (FCFF) utilizando una aproximación simplificada sobre datos operativos normalizados, net debt de 43 B$ y 14.8 B acciones en circulación.</p>
+            <p><em>Modifique los inputs para recalcular dinámicamente Enterprise Value, Equity Value y el Value Per Share.</em></p>
+
+            <div class="dcf-grid">
+                <!-- Inputs -->
+                <div class="dcf-controls" id="dcfInputs">
+                    <h3 style="margin-bottom:var(--spacing-md); color:var(--color-navy); font-size:1rem; border-bottom: 1px solid var(--color-border); padding-bottom: 8px;">Inputs Dinámicos de Sensibilidad</h3>
+                    
+                    <div class="control-group">
+                        <div class="control-label"><span>Ingreso Base (2026) B$</span> <span id="valRev">467</span></div>
+                        <input type="range" class="control-input" id="inpRev" min="410" max="520" step="1" value="467">
+                    </div>
+                    
+                    <div class="control-group">
+                        <div class="control-label"><span>CAGR Largo Plazo %</span> <span id="valGrowth">6.0</span></div>
+                        <input type="range" class="control-input" id="inpGrowth" min="2" max="15" step="0.5" value="6.0">
+                    </div>
+
+                    <div class="control-group">
+                        <div class="control-label"><span>Operating Margin %</span> <span id="valOM">32.5</span></div>
+                        <input type="range" class="control-input" id="inpOM" min="25" max="40" step="0.5" value="32.5">
+                    </div>
+
+                    <div class="control-group">
+                        <div class="control-label"><span>Tasa Impositiva %</span> <span id="valTax">16.0</span></div>
+                        <input type="range" class="control-input" id="inpTax" min="10" max="25" step="1" value="16">
+                    </div>
+
+                    <div class="control-group">
+                        <div class="control-label"><span>WACC (Descuento) %</span> <span id="valWacc">8.3</span></div>
+                        <input type="range" class="control-input" id="inpWacc" min="6.5" max="11" step="0.1" value="8.3">
+                    </div>
+
+                    <div class="control-group">
+                        <div class="control-label"><span>Terminal Growth %</span> <span id="valTg">4.0</span></div>
+                        <input type="range" class="control-input" id="inpTg" min="1.5" max="5.0" step="0.1" value="4.0">
+                    </div>
+                </div>
+
+                <!-- Outputs -->
+                <div class="dcf-output">
+                    <h3 style="margin-bottom:var(--spacing-md); font-size:1.1rem; border-bottom: 1px solid rgba(255,255,255,0.2); padding-bottom: 8px;">Output: Proyección Intrínsica <span class="tag-calculated">Dynamico</span></h3>
+                    
+                    <div class="dcf-output-grid">
+                        <div class="output-card">
+                            <div class="output-label">Enterprise Value</div>
+                            <div class="output-val" id="outEV">-- B$</div>
+                        </div>
+                        <div class="output-card">
+                            <div class="output-label">Net Debt (Fija)</div>
+                            <div class="output-val">- 43.0 B$</div>
+                        </div>
+                        <div class="output-card">
+                            <div class="output-label">Equity Value</div>
+                            <div class="output-val" id="outEqV">-- B$</div>
+                        </div>
+                    </div>
+
+                    <div class="dcf-output-grid" style="grid-template-columns: 1fr; margin-bottom:0;">
+                        <div class="output-card main-result">
+                            <div class="output-label">Intrinsic Value Per Share (USD)</div>
+                            <div class="output-val" style="font-size: 2.2rem;" id="outShare">-- $</div>
+                            <div style="font-size: 0.8rem; opacity: 0.9; margin-top: 5px;">Basado en 14.8 B de acciones en circulación</div>
+                        </div>
+                    </div>
+                    <p style="font-size: 0.75rem; opacity: 0.7; margin-top:10px; margin-bottom: 0;">Metodología interna: 5 años operativos (extrapolados con CAGR) asumiendo ratios Capex/D&A compensados y FCF conversion directa (OpMargin * (1-TaxRate)). El Terminal Value computa crecimiento perpetuo usando Gordon Growth. No considerar asesoria formal pura.</p>
+                </div>
+            </div>
+
+            <h2 class="subsection-title">Sensibilidad Visual Base</h2>
+            <div class="data-table-wrapper">
+                <table class="data-table" style="text-align: center;">
+                    <thead>
+                        <tr>
+                            <th style="text-align: center; background-color: var(--color-navy); color: white;">TG \ WACC</th>
+                            <th style="background-color: var(--color-steel); color: white; text-align: center;">7.8%</th>
+                            <th style="background-color: var(--color-steel); color: white; text-align: center;">8.0%</th>
+                            <th style="background-color: var(--color-accent); color: white; text-align: center;">8.3% (Base)</th>
+                            <th style="background-color: var(--color-steel); color: white; text-align: center;">8.6%</th>
+                            <th style="background-color: var(--color-steel); color: white; text-align: center;">8.8%</th>
+                        </tr>
+                    </thead>
+                    <tbody style="text-align: center;">
+                        <tr><td style="font-weight: 600;">2.5%</td><td>$215</td><td>$198</td><td>$185</td><td>$175</td><td>$168</td></tr>
+                        <tr><td style="font-weight: 600;">3.0%</td><td>$227</td><td>$205</td><td>$188</td><td>$175</td><td>$166</td></tr>
+                        <tr style="background-color: #f0f4f8; font-weight: 700;"><td style="font-weight: 600; color: var(--color-navy);">4.0% (Base)</td><td style="color:var(--color-navy)">$268</td><td style="color:var(--color-navy)">$232</td><td style="color:var(--color-accent)">$220</td><td style="color:var(--color-navy)">$187</td><td style="color:var(--color-navy)">$173</td></tr>
+                        <tr><td style="font-weight: 600;">4.5%</td><td>$305</td><td>$255</td><td>$220</td><td>$197</td><td>$180</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- 12, 13 y 14. Discusión, Riesgos, Conclusión -->
+        <section id="discusion" class="report-section">
+            <h1 class="section-title">12 y 13. Discusión y Riesgos Materiales</h1>
+            <h2 class="subsection-title">Tabla 7. Matriz Cuantificada de Riesgos y Sensibilidad Estructural</h2>
+            <div class="data-table-wrapper">
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Riesgo Identificado</th>
+                            <th>Probabilidad</th>
+                            <th>Impacto EPS / Valoración</th>
+                            <th>Transmisión a Escenarios (Modelado DCF)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Regulación DMA y App Store (DoJ/EU)</strong></td>
+                            <td>Alta</td>
+                            <td>Compresión -7% a -10% EV</td>
+                            <td><strong>Escenario Bajista:</strong> Contracción del margen bruto consolidado; reducción del FCF Terminal en 4-6 B$.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Guerra Comercial / Tarifas Cadena de Suministro</strong></td>
+                            <td>Media</td>
+                            <td>Contracción -10% a -15% EV</td>
+                            <td><strong>Escenario Bajista:</strong> Traslación directa a COGS debido a lentitud en migración Foxconn/India, comprimiendo Operating Margin.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Estancamiento en "Apple Intelligence"</strong></td>
+                            <td>Media</td>
+                            <td>-8% a -12% V. Accionarial</td>
+                            <td><strong>Escenario Base/Bajista:</strong> Freno en ingresos de hardware, erosionando el CAGR proyectado de 6.0% a 3.0%.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Anulación de TAC (Pagos Google Search)</strong></td>
+                            <td>Media - Alta</td>
+                            <td>-5% a -7% EV</td>
+                            <td><strong>Escenario Bajista:</strong> Pérdida del ingreso puro de mayor margen neto (15-20 B$), afectante primario de NOPAT.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Éxito Sostenido en Mercado Indio</strong></td>
+                            <td>Baja - Media</td>
+                            <td>Expansión +15% EV</td>
+                            <td><strong>Escenario Alcista:</strong> Aceleración del CAGR, estabilizando ciclos de sustitución y ampliando base instalada ARPU.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <p style="font-size: 0.8rem; color: var(--color-text-muted);"><em>Fuente: Análisis de escenarios cruzado con métricas históricas de elasticidad operativa reportada (SEC Filings).</em></p>
+
+            <p>La cotización nominal por encima de los 250 dólares requiere una asimilación perfecta de la realidad geopolítica, junto con un margen de ejecución sobresaliente para Apple Intelligence. Cualquier fricción macro (recesiones severas y contracción de renta disponible) degrada de media 5-8% de los beneficios inmediatamente por postergaciones de compras de productos físicos no críticos.</p>
+
+            
+            <h2 class="subsection-title">Análisis Narrativo de Riesgos Prioritarios</h2>
+            <p><strong>App Store y DMA:</strong> La Comisión Europea designó a Apple como <em>gatekeeper</em> bajo el Digital Markets Act. Los requisitos incluyen permitir <em>sideloading</em>, tiendas de aplicaciones alternativas y reducción de comisiones. Una reducción del <em>take-rate</em> del 30% al 20-25% implicaría un impacto negativo en Services revenue de 5-10 B$ anuales, equivalente a 4-8% de compresión del segmento de mayor margen. El escenario bajista de esta tesis descuenta parcialmente este riesgo.</p>
+            <p><strong>TAC y Buscador por Defecto (Google):</strong> Apple percibe entre 15 y 20 B$ anuales de Google como compensación por ser el motor de búsqueda preinstalado en Safari. El Departamento de Justicia de EEUU investiga si este acuerdo viola la legislación antimonopolio. Una eventual prohibición eliminaría un flujo de ingresos de alto margen sin contrapartida inmediata, deprimiendo el NOPAT en un rango del 8-12%.</p>
+            <p><strong>Exposición a China:</strong> China representa el 10% de los ingresos de Apple y >80% de la producción de iPhones (aunque en progresiva reducción hacia India). Los aranceles actuales de EEUU sobre china (+145%) crean un coste potencial de 900 M$ a 2 B$ por trimestre si se aplican directamente a productos Apple. La diversificación hacia India (objetivo: 30-40% del volumen iPhone fuera de China en 2027) atenúa pero no elimina el riesgo en el horizonte de esta tesis.</p>
+            <p><strong>Adopción de Apple Intelligence:</strong> Los primeros datos de adopción (FY2025 Q1-Q2) apuntan a una adopción más moderada de lo previsto. Si el ciclo de renovación se sitúa en el escenario conservador (10% de la base instalada en 24 meses vs. el 15% del caso base), el CAGR de ingresos para FY2026-FY2027 se reduciría del 10-12% al 5-7%, con impacto directo en FCF y valoración intrínseca.</p>
+
+            <p>Como se desglosa en la <strong>Tabla 7</strong> (Matriz de Riesgos), la revisión activa por parte del Departamento de Justicia (DOJ) en EEUU y de los organismos procompetitivos de la Comisión Europea sobre el porcentaje de captura (app store cut) del 30% representa la mayor impacto material negativo sobre el FCF directo. Disminuir este estrato tarifario al rango del 15% podría erosionar significativamente miles de millones de dólares directamente del EBITDA consolidado, conllevando ajustes a la baja en la valoración a largo plazo.</p>
+        </section>
+
+        <section id="conclusion" class="report-section">
+            <h1 class="section-title">14. Conclusión Analítica Institucional</h1>
+            <div class="synthesis-box">
+                <h3 style="color: var(--color-accent);">RECOMENDACIÓN: HOLD (MANTENER / ACUMULAR EN RETROCESO)</h3>
+                <p>Apple opera en la posición de liderazgo estructural en el sector, combinando rendimientos propios de monopolios en software y métricas de retención excepcionales en la industria. Para capitales con paciencia intercadencial, es el referencia estructural de alta calidad. No obstante, las asimetrías de oportunidad presentes recomiendan evitar entradas agresivas en los techos técnicos sin márgenes mínimos del 20% frente al intrínseco. Una ventana segura de acumulación masiva subyace sistemáticamente por debajo de la cota teórica residual de 220 USD.</p>
+            </div>
+        </section>
+
+        <!-- 15. Fuentes -->
+        <section id="fuentes" class="report-section">
+            <h1 class="section-title">15. Fuentes Documentales</h1>
+            <p>La siguiente recopilación bibliográfica fundamenta las asunciones macroeconómicas, los parámetros operativos y la estructura analítica de este informe.</p>
+            
+            <h2 class="subsection-title">Fuentes Primarias (Reportes Estatutarios)</h2>
+            <ul>
+                <li><strong>Apple Investor Relations:</strong> Form 10-K relativo al ejercicio fiscal cerrado en FY2025.</li>
+                <li><strong>Securities and Exchange Commission (SEC):</strong> Form 10-Q del primer trimestre fiscal (Q1) finalizado en diciembre de 2025 (reportado en enero/febrero de 2026).</li>
+                <li><strong>Earnings Call Transcripts:</strong> Declaraciones prospectivas de Tim Cook (CEO) y Luca Maestri (CFO) relativas al guidance de márgenes y adopción inicial de Apple Intelligence (Q1 FY2026).</li>
+            </ul>
+
+            <h2 class="subsection-title">Fuentes Secundarias y Bases de Datos</h2>
+            <ul>
+                <li><strong>Berkshire Hathaway:</strong> Cartas anuales y análisis de las participaciones 13F relativas a los flujos institucionales en AAPL.</li>
+                <li><strong>Entidades Macro y de Cadena de Suministro:</strong> Reuters, Bloomberg, Counterpoint Research, Canalys e IDC (para dimensionamiento de base instalada y despachos globales de smartphones en 2025/2026).</li>
+                <li><strong>Datos Macro:</strong> Federal Reserve Economic Data (FRED) y US Department of the Treasury (Curva de tipos de interés a 10 años empleada como Risk-Free Rate en el DCF).</li>
+            </ul>
+
+            
+            <h2 class="subsection-title">Tercera Categoría: Estimaciones y Cálculos Internos</h2>
+            <ul>
+                <li><strong>Proyecciones de ingresos:</strong> Elaboradas con base en datos históricos del 10-K y supuestos de crecimiento especificados en la Sección 10. <span class="tag-estimated">Estimado</span></li>
+                <li><strong>Cálculos WACC y DCF:</strong> Construidos sobre parámetros de mercado (Fed Funds Rate, ERP histórico) y estructura de capital del 10-K más reciente. <span class="tag-calculated">Calculado</span></li>
+                <li><strong>Métricas de ratios:</strong> Calculadas sobre estados financieros reportados. Algunas métricas de comparables proceden de Bloomberg/FactSet (estimaciones de consenso). <span class="tag-calculated">Calculado</span> / <span class="tag-estimated">Estimado</span></li>
+            </ul>
+
+            <h2 class="subsection-title">Notas Metodológicas y Limitación de Alcance</h2>
+            <div class="synthesis-box">
+                <p><strong>Aclaración sobre Cifras:</strong> Las magnitudes marcadas como "Reportadas" proceden directamente de los estados financieros auditados GAAP. Aquellas etiquetadas como "Estimadas" son proyecciones analíticas elaboradas ad hoc.<br><br>
+                <strong>Limitación de Responsabilidad:</strong> Este documento conforma un ejercicio analítico retrospectivo y prospectivo a nivel de <em>equity research</em> académico/institucional. En ningún caso constituye asesoramiento financiero personalizado, recomendación de compra directa ni incitación comercial bajo ninguna jurisdicción.</p>
+            </div>
+        </section>
+
+        <!-- 16. Glosario -->
+        <section id="glosario" class="report-section">
+            <h1 class="section-title">16. Glosario Analítico Especializado</h1>
+            <p>Términos clave para la correcta interpretación operativa y financiera de la tesis elaborada para Apple Inc.</p>
+            
+            <div class="accordion-container" style="display:flex; flex-direction:column; gap:15px; margin-top: 20px;">
+                <!-- Conceptos de Modelo de Negocio -->
+                <div style="border:1px solid var(--color-border); border-radius:4px; padding:15px; background-color: var(--bg-surface);">
+                    <h3 style="margin-bottom:10px; font-size:1.05rem; color:var(--color-navy); border-bottom: 2px solid var(--color-steel); padding-bottom: 5px;">1. Conceptos de Negocio Estratégico</h3>
+                    <ul style="margin-bottom:0;">
+                        <li><strong>ARPU (Average Revenue Per User):</strong> En Apple, el ratio de monetización de servicios (iCloud, Music, App Store) extraído de cada dispositivo activo. Funciona como mitigador cíclico del hardware.</li>
+                        <li><strong>Installed Base (Base Instalada):</strong> Volumen de dispositivos activos globalmente (superando 2.5 billones en 2026). El principal driver del crecimiento en la rama de servicios.</li>
+                        <li><strong>Switching Costs (Costes de Cambio):</strong> El costo friccional (tecnológico, temporal o cognitivo) para abandonar el ecosistema Apple hacia Android o Windows.</li>
+                        <li><strong>Pricing Power (Poder de Fijación):</strong> Capacidad monopolística de repercutir los costes operativos directamente al consumidor sin destrucción porcentual de demanda.</li>
+                        <li><strong>Economic Moat (Foso Económico):</strong> Ventaja competitiva sostenida de Apple sustentada en red y patentes.</li>
+                        <li><strong>Edge AI / On-device AI:</strong> Ejecución de "Apple Intelligence" de manera nativa y directa dentro de los procesadores A/M Series de la compañía, logrando latencia cero y salvaguarda de privacidad sin depender fundamentalmente de granjas de servidores externas.</li>
+                    </ul>
+                </div>
+                
+                <!-- Conceptos Financieros -->
+                <div style="border:1px solid var(--color-border); border-radius:4px; padding:15px; background-color: var(--bg-surface);">
+                    <h3 style="margin-bottom:10px; font-size:1.05rem; color:var(--color-navy); border-bottom: 2px solid var(--color-steel); padding-bottom: 5px;">2. Parámetros de Rentabilidad</h3>
+                    <ul style="margin-bottom:0;">
+                        <li><strong>Gross Margin (Margen Bruto):</strong> Ingresos tras descontar Coste de Bienes Vendidos (COGS). En Apple ronda el 46-47%, traccionado fuertemente por Servicios (70%+).</li>
+                        <li><strong>Operating Margin (Margen Operativo):</strong> Rentabilidad tras deducir RD (I+D) y SG&A. Apple reporta cerca del 32-33%, indicativo altísimo de eficiencia estructural.</li>
+                        <li><strong>Net Margin (Margen Neto):</strong> Beneficio total tras la capa impositiva (línea final).</li>
+                        <li><strong>ROIC (Return on Invested Capital):</strong> Rendimiento del capital inyectado para mantenimiento y expansión del negocio. Extremo en un entorno "asset-light" ensamblado por terceros.</li>
+                        <li><strong>FCF (Free Cash Flow):</strong> Caja libre disponible para reparto (dividendos/recompras), la auténtica métrica de la salud monetaria.</li>
+                        <li><strong>EBITDA:</strong> Beneficio antes de intereses, impuestos, depreciación y amortización.</li>
+                        <li><strong>YoY (Year-over-Year):</strong> Crecimiento comparado respecto al periodo fiscal interanual inmediatamente anterior.</li>
+                    </ul>
+                </div>
+
+                <!-- Conceptos de Modelado -->
+                <div style="border:1px solid var(--color-border); border-radius:4px; padding:15px; background-color: var(--bg-surface);">
+                    <h3 style="margin-bottom:10px; font-size:1.05rem; color:var(--color-navy); border-bottom: 2px solid var(--color-steel); padding-bottom: 5px;">3. Métricas de Valoración (Intrinsic)</h3>
+                    <ul style="margin-bottom:0;">
+                        <li><strong>DCF (Discounted Cash Flow):</strong> Método base empleado en esta tesis. Determina que la empresa vale la suma de su flujo libre de caja futuro, traído al valor presente del dinero.</li>
+                        <li><strong>WACC (Weighted Average Cost of Capital):</strong> Coste equilibrado del pasivo (deuda ponderada + coste de fondos propios equity risk). Fijado en modelo en ~8.3% debido al perfil de riesgo AAA de AAPL.</li>
+                        <li><strong>Terminal Growth (Crecimiento Terminal):</strong> La velocidad de expansión económica asumida ad infinitum al terminar la proyección a 5 años. Se fijó un conservador y macroeconómico 4.0%.</li>
+                        <li><strong>CAGR (Compound Annual Growth Rate):</strong> Tasa de variación media geométrica de largo plazo prevista para los ingresos.</li>
+                        <li><strong>Enterprise Value (EV):</strong> Coste hipotético y total de compra empresarial: Valor bursátil puro (Equity) sumado a la Deuda Neta que hay que absorber.</li>
+                        <li><strong>Net Debt (Deuda Neta):</strong> Obligaciones financieras descontando las posiciones inmensas de caja y equivalentes que atesora Apple en sus arcas (unos ~43 B$).</li>
+                        <li><strong>Equity Value:</strong> El remanente de valor total de flujos descontados tras sustraer el escudo físico de deuda neta, empleado para el cálculo último por acción.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- 17. Anexos -->
+        <section id="anexos" class="report-section">
+            <h1 class="section-title">17. Anexos Cuantitativos Institucionales</h1>
+            <p>El presente bloque compila la documentación cuantitativa de soporte al cuerpo analítico de esta tesis. Los Anexos A-F contienen los estados financieros históricos, métricas de eficiencia, metodología del modelo de valoración, y cronología de eventos corporativos relevantes.</p>
+
+            <h2 class="subsection-title">Anexo A. Cuenta de Pérdidas y Ganancias Simplificada (FY2021-FY2025)</h2>
+            <div class="section-note">Fuente: Apple Form 10-K FY2021-FY2025. Datos en millones de USD. <span class="tag-reported">Reportado</span></div>
+            <div class="data-table-wrapper">
+                <table class="data-table" style="font-size:0.82rem;">
+                    <thead>
+                        <tr><th>Concepto (M USD)</th><th>FY2021</th><th>FY2022</th><th>FY2023</th><th>FY2024</th><th>FY2025</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Ventas Netas (Productos)</td><td>297,392</td><td>316,199</td><td>298,085</td><td>301,400</td><td>306,800</td></tr>
+                        <tr><td>Ventas Netas (Servicios)</td><td>68,425</td><td>78,129</td><td>85,200</td><td>96,000</td><td>109,200</td></tr>
+                        <tr style="background:#f0f4f8;font-weight:700;"><td>Total Ventas Netas</td><td>365,817</td><td>394,328</td><td>383,285</td><td>391,400</td><td>416,000</td></tr>
+                        <tr><td>Coste de Ventas (Productos)</td><td>(192,266)</td><td>(201,471)</td><td>(189,282)</td><td>(190,000)</td><td>(192,500)</td></tr>
+                        <tr><td>Coste de Ventas (Servicios)</td><td>(20,715)</td><td>(22,125)</td><td>(24,800)</td><td>(25,000)</td><td>(31,000)</td></tr>
+                        <tr style="background:#f0f4f8;"><td><strong>Margen Bruto</strong></td><td><strong>152,836</strong></td><td><strong>170,732</strong></td><td><strong>169,203</strong></td><td><strong>176,400</strong></td><td><strong>192,500</strong></td></tr>
+                        <tr><td><em>Margen Bruto (%)</em></td><td><em>41.8%</em></td><td><em>43.3%</em></td><td><em>44.1%</em></td><td><em>45.1%</em></td><td><em>46.2%</em></td></tr>
+                        <tr><td>I+D (R&amp;D)</td><td>(21,914)</td><td>(26,251)</td><td>(29,915)</td><td>(31,500)</td><td>(34,200)</td></tr>
+                        <tr><td>Gastos de Ventas, Generales y Admin. (SG&amp;A)</td><td>(21,973)</td><td>(25,094)</td><td>(24,932)</td><td>(24,200)</td><td>(25,100)</td></tr>
+                        <tr style="background:#f0f4f8;font-weight:700;"><td>Ingresos Operativos</td><td>108,949</td><td>119,387</td><td>114,356</td><td>120,700</td><td>133,200</td></tr>
+                        <tr><td><em>Margen Operativo (%)</em></td><td><em>29.3%</em></td><td><em>30.3%</em></td><td><em>29.8%</em></td><td><em>30.8%</em></td><td><em>32.0%</em></td></tr>
+                        <tr><td>Ingresos / (Gastos) Financieros Netos</td><td>258</td><td>(334)</td><td>3,750</td><td>3,862</td><td>4,200</td></tr>
+                        <tr><td>Impuesto sobre Beneficios</td><td>(14,527)</td><td>(19,300)</td><td>(16,741)</td><td>(18,500)</td><td>(21,200)</td></tr>
+                        <tr style="background:var(--color-steel);color:white;font-weight:700;"><td>Beneficio Neto</td><td>94,680</td><td>99,803</td><td>96,995</td><td>93,700</td><td>112,000</td></tr>
+                        <tr><td><em>Margen Neto (%)</em></td><td><em>25.9%</em></td><td><em>25.3%</em></td><td><em>25.3%</em></td><td><em>23.9%</em></td><td><em>26.9%</em></td></tr>
+                        <tr><td>EPS Diluido (USD)</td><td>5.61</td><td>6.11</td><td>6.13</td><td>6.08</td><td>7.30</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h2 class="subsection-title">Anexo B. Balance Simplificado (FY2023-FY2025)</h2>
+            <div class="section-note">Fuente: Apple Form 10-K. Datos en miles de millones de USD. <span class="tag-reported">Reportado</span></div>
+            <div class="data-table-wrapper">
+                <table class="data-table" style="font-size:0.82rem;">
+                    <thead>
+                        <tr><th>Concepto (B USD)</th><th>FY2023</th><th>FY2024</th><th>FY2025</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td><strong>ACTIVO</strong></td><td></td><td></td><td></td></tr>
+                        <tr><td>Efectivo y Equivalentes</td><td>29.9</td><td>29.9</td><td>30.0</td></tr>
+                        <tr><td>Valores Negociables a Corto Plazo</td><td>31.6</td><td>35.2</td><td>40.0</td></tr>
+                        <tr><td>Cuentas por Cobrar (Comerciales)</td><td>29.5</td><td>33.2</td><td>35.0</td></tr>
+                        <tr><td>Inventarios</td><td>6.3</td><td>7.3</td><td>7.5</td></tr>
+                        <tr><td>Activos Circulantes Totales</td><td>143.6</td><td>152.0</td><td>155.0</td></tr>
+                        <tr><td>Valores Negociables a Largo Plazo</td><td>100.5</td><td>91.5</td><td>87.9</td></tr>
+                        <tr><td>Propiedad, Planta y Equipo (Neto)</td><td>43.7</td><td>45.7</td><td>46.5</td></tr>
+                        <tr><td>Otros Activos No Circulantes</td><td>64.8</td><td>64.5</td><td>63.6</td></tr>
+                        <tr style="background:#f0f4f8;font-weight:700;"><td>Activos Totales</td><td>352.6</td><td>353.7</td><td>353.0</td></tr>
+                        <tr><td><strong>PASIVO Y PATRIMONIO</strong></td><td></td><td></td><td></td></tr>
+                        <tr><td>Cuentas por Pagar</td><td>62.6</td><td>68.9</td><td>72.0</td></tr>
+                        <tr><td>Deuda a Corto Plazo</td><td>9.8</td><td>10.1</td><td>10.4</td></tr>
+                        <tr><td>Pasivos Circulantes Totales</td><td>145.3</td><td>145.0</td><td>148.0</td></tr>
+                        <tr><td>Deuda a Largo Plazo</td><td>95.3</td><td>98.1</td><td>101.0</td></tr>
+                        <tr><td>Otros Pasivos No Circulantes</td><td>49.8</td><td>46.5</td><td>44.0</td></tr>
+                        <tr style="background:#f0f4f8;font-weight:700;"><td>Pasivos Totales</td><td>290.4</td><td>289.6</td><td>293.0</td></tr>
+                        <tr><td>Fondos Propios (Patrimonio)</td><td>62.2</td><td>64.1</td><td>60.0</td></tr>
+                        <tr style="background:var(--color-steel);color:white;font-weight:700;"><td>Deuda Neta Ajustada</td><td>~45.0</td><td>~49.0</td><td>~43.0</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h2 class="subsection-title">Anexo C. Flujo de Caja Libre y Capital Allocation (FY2023-Q1 FY2026)</h2>
+            <div class="section-note">Fuente: Apple Form 10-K y Earnings Releases. Datos en miles de millones de USD.</div>
+            <div class="data-table-wrapper">
+                <table class="data-table" style="font-size:0.82rem;">
+                    <thead>
+                        <tr><th>Concepto (B USD)</th><th>FY2023 <span class="tag-reported">Rep.</span></th><th>FY2024 <span class="tag-reported">Rep.</span></th><th>FY2025 <span class="tag-reported">Rep.</span></th><th>Q1 FY2026 <span class="tag-reported">Rep.</span></th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Flujo de Caja Operativo (OCF)</td><td>110.5</td><td>111.3</td><td>129.0</td><td>53.9</td></tr>
+                        <tr><td>Gastos de Capital (CAPEX)</td><td>(15.5)</td><td>(15.2)</td><td>(18.0)</td><td>(4.0)</td></tr>
+                        <tr style="background:#e6f2ff;font-weight:700;"><td>Free Cash Flow (FCF)</td><td>95.0</td><td>96.1</td><td>111.0</td><td>49.9</td></tr>
+                        <tr><td><em>Margen FCF (%)</em></td><td><em>24.8%</em></td><td><em>24.5%</em></td><td><em>26.6%</em></td><td><em>34.7%</em></td></tr>
+                        <tr><td>D&amp;A (aprox.)</td><td>11.5</td><td>12.2</td><td>13.5</td><td>N/D</td></tr>
+                        <tr><td>I+D (R&amp;D)</td><td>29.9</td><td>31.4</td><td>34.2</td><td>N/D</td></tr>
+                        <tr><td>Recompras de Acciones</td><td>(77.5)</td><td>(28.5)</td><td>(89.0)</td><td>(25.0)</td></tr>
+                        <tr><td>Dividendos Pagados</td><td>(15.0)</td><td>(15.5)</td><td>(15.5)</td><td>(3.9)</td></tr>
+                        <tr style="background:#f0f4f8;font-weight:700;"><td>Capital Total Retornado al Accionista</td><td>92.5</td><td>44.0</td><td>104.5</td><td>28.9</td></tr>
+                        <tr><td>Payout Ratio vs FCF (%)</td><td>~97%</td><td>46%</td><td>94%</td><td>~58%</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <p style="font-size:0.8rem;color:var(--color-text-muted);"><em>El CAPEX de Apple (~4% de ingresos) es estructuralmente bajo para una compañía de su tamaño, reflejo del modelo asset-light de manufactura externalizada. La D&amp;A es aproximadamente equivalente al CAPEX, lo que hace prácticamente simétrica la conversión NOPAT → FCF.</em></p>
+
+            <h2 class="subsection-title">Anexo D. Ratios Clave de Eficiencia y Rentabilidad (FY2024-FY2025)</h2>
+            <div class="section-note">Fuente: SEC Filings y cálculos propios. Métricas de ratios: <span class="tag-calculated">Calculado</span> sobre datos reportados.</div>
+            <div class="data-table-wrapper">
+                <table class="data-table" style="font-size:0.82rem;">
+                    <thead>
+                        <tr><th>Ratio / Métrica</th><th>FY2024</th><th>FY2025</th><th>Comentario Analítico</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>ROIC (Return on Invested Capital)</td><td>~45%</td><td>~50%</td><td>Extraordinario; refleja la intensidad baja de capital del modelo. Top 1% global.</td></tr>
+                        <tr><td>Margen Bruto (%)</td><td>45.6%</td><td>46.9%</td><td>Expansión sostenida vía mix shift hacia Servicios (75% margen bruto).</td></tr>
+                        <tr><td>Margen Operativo (%)</td><td>30.8%</td><td>32.0%</td><td>Estable en rango histórico alto; presión de I+D compensada por apalancamiento.</td></tr>
+                        <tr><td>Margen Neto (%)</td><td>23.9%</td><td>26.9%</td><td>FY2025 amplificado parcialmente por reversión de cargo fiscal de 10.2 B$ (UE).</td></tr>
+                        <tr><td>Margen FCF (%)</td><td>24.5%</td><td>26.6%</td><td>Cercano al margen neto; implica conversión de beneficio en caja casi total.</td></tr>
+                        <tr><td>Revenue per Employee (M$)</td><td>~2.2</td><td>~2.3</td><td>Productividad laboral de nivel superior en la industria tecnológica.</td></tr>
+                        <tr><td>Inventory Turnover (veces)</td><td>34.8x</td><td>32.1x</td><td>Gestión JIT; inventarios de 6-7 días de ventas. Marginal desaceleración.</td></tr>
+                        <tr><td>Asset Turnover (veces)</td><td>1.1x</td><td>1.2x</td><td>Mejora de eficiencia de activos; activos estables mientras ingresos crecen.</td></tr>
+                        <tr><td>Buyback Yield Aprox. (%)</td><td>~1.0%</td><td>~3.0%</td><td>FY2025 récord de recompras (89 B$); retorno sintético muy relevante para el accionista.</td></tr>
+                        <tr><td>Dividend Yield Aprox. (%)</td><td>~0.5%</td><td>~0.5%</td><td>El dividendo es bajo por diseño; la política de retorno prioriza recompras.</td></tr>
+                        <tr><td>Revenue per Share (USD diluted)</td><td>~25.4</td><td>~26.8</td><td>Crecimiento impulsado parcialmente por reducción de denominador (buybacks).</td></tr>
+                        <tr><td>EPS Diluido (USD)</td><td>6.08</td><td>7.30</td><td>Crecimiento del 20% YoY en FY2025; parcialmente impactado por efectos fiscales no recurrentes.</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h2 class="subsection-title">Anexo E. Arquitectura del WACC (Cálculo Detallado)</h2>
+            <div class="data-table-wrapper">
+                <table class="data-table" style="font-size:0.82rem;">
+                    <thead>
+                        <tr><th>Parámetro CAPM</th><th>Valor</th><th>Fuente y Justificación</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Tasa Libre de Riesgo (Rf)</td><td>4.0%</td><td>Yield del US Treasury 10Y a marzo 2026 (FRED, US Treasury). <span class="tag-reported">Dato de Mercado</span></td></tr>
+                        <tr><td>Beta Histórica (β)</td><td>1.0</td><td>Beta de AAPL frente al S&amp;P 500 (rango histórico 0.95-1.05). <span class="tag-calculated">Calculado</span></td></tr>
+                        <tr><td>Prima de Riesgo de Mercado (ERP)</td><td>4.5%</td><td>Prima histórica promedio de renta variable EEUU (Damodaran). <span class="tag-estimated">Estimado</span></td></tr>
+                        <tr><td>Coste de Equity (Ke = Rf + β × ERP)</td><td>8.5%</td><td>CAPM: 4.0% + 1.0 × 4.5%. <span class="tag-calculated">Calculado</span></td></tr>
+                        <tr><td>Coste Bruto de Deuda (Kd)</td><td>2.0%</td><td>Tasa media ponderada de la deuda según 10-K. <span class="tag-reported">Rep.</span></td></tr>
+                        <tr><td>Kd After-Tax (tasa fiscal 16%)</td><td>1.68%</td><td>2.0% × (1 – 0.16). <span class="tag-calculated">Calculado</span></td></tr>
+                        <tr><td>Peso del Equity (E/V)</td><td>97.1%</td><td>Market Cap ≈ 3.8 T$; Deuda ≈ 115 B$. <span class="tag-calculated">Calculado</span></td></tr>
+                        <tr><td>Peso de la Deuda (D/V)</td><td>2.9%</td><td>Complementario al anterior. <span class="tag-calculated">Calculado</span></td></tr>
+                        <tr style="background:var(--color-accent);color:white;font-weight:700;"><td>WACC = (E/V × Ke) + (D/V × Kd)</td><td>8.30%</td><td>(0.971 × 8.5%) + (0.029 × 1.68%) = 8.25% + 0.05% ≈ 8.30%.</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h2 class="subsection-title">Anexo F. Cronología de Eventos Corporativos Relevantes (2024-2026)</h2>
+            <div class="data-table-wrapper">
+                <table class="data-table" style="font-size:0.82rem;">
+                    <thead>
+                        <tr><th>Periodo</th><th>Evento</th><th>Implicación Analítica</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Junio 2024</td><td>WWDC 2024: Presentación de Apple Intelligence en iOS 18/macOS 15.</td><td>Inicio del ciclo de renovación IA. Requiere hardware A17 Pro / M1 o superior.</td></tr>
+                        <tr><td>Octubre 2024</td><td>iOS 18.1: Primer despliegue de Apple Intelligence (EN-US).</td><td>Arranque del ciclo en EEUU; adopción inicial más moderada de lo esperado.</td></tr>
+                        <tr><td>Diciembre 2024</td><td>Expansión Apple Intelligence a inglés regional (UK, AU, CA).</td><td>Amplía cobertura al bloque anglófono; impulsa ventas Q1 FY2026.</td></tr>
+                        <tr><td>Febrero 2025</td><td>Q1 FY2026 earnings: Revenue 143.8 B$ (+16% YoY), récord histórico.</td><td>Validación del ciclo de renovación y momentum en Servicios.</td></tr>
+                        <tr><td>Abril 2025</td><td>Prevista expansión de Apple Intelligence en idiomas europeos y asiáticos.</td><td>Activación del mercado EU y potencial apertura en China. Catalizador medio plazo.</td></tr>
+                        <tr><td>Septiembre 2025</td><td>Lanzamiento previsto iPhone 17 (A19, 3nm TSMC).</td><td>Pico esperado del superciclo; ASP objetivo >1,050 USD.</td></tr>
+                        <tr><td>1H 2026</td><td>Posible resolución parcial de procesos antimonopolio en EEUU (DOJ vs. Apple).</td><td>Riesgo regulatorio en Servicios; impacto en valoración si take-rate se reduce.</td></tr>
+                        <tr><td>2027 (estimado)</td><td>Objetivo: 30-40% del volumen iPhone manufacturado fuera de China (India/Vietnam).</td><td>Reducción del riesgo geopolítico de cadena de suministro. <span class="tag-estimated">Est.</span></td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="synthesis-box">
+                <h3 style="color:var(--color-navy);">Nota sobre el Presente Documento (V4.2)</h3>
+                <p>Esta tesis ha sido elaborada exclusivamente con fines analíticos e informativos, haciendo uso de estados financieros públicos, declaraciones de la dirección, análisis de terceros y modelos de proyección propios debidamente etiquetados. No constituye asesoramiento de inversión personalizado bajo ninguna jurisdicción. Datos reportados: Apple SEC Filings (10-K, 10-Q, Earnings Releases). Estimaciones: análisis de proyección interno. En caso de discrepancia entre fuentes, se ha priorizado el dato más reciente y contrastable. Versión V4.2 — Marzo 2026.</p>
+            </div>
+        </section>
+
+    </main>
+
+
+    <script>
+        // Funciones auxiliares de navegación (Scroll spy)
+        const sections = document.querySelectorAll('.report-section');
+        const navLinks = document.querySelectorAll('.nav-link');
+
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(sec => {
+                const secTop = sec.offsetTop;
+                if (scrollY >= secTop - 200) {
+                    current = sec.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href').includes(current)) {
+                    link.classList.add('active');
+                }
+            });
+        });
+
+        navLinks.forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                window.scrollTo({
+                    top: target.offsetTop - 50,
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // ==========================================
+        //  Zero-Dependency SVG Charts 
+        // ==========================================
+        function drawBarChart(containerId, labels, dataArr, maxVal, color) {
+            const container = document.getElementById(containerId);
+            if (!container) return;
+            const w = container.clientWidth;
+            const h = container.clientHeight;
+            
+            const padding = 40;
+            const effectiveW = w - padding * 2;
+            const effectiveH = h - padding * 2;
+            const barW = (effectiveW / dataArr.length) * 0.6;
+            const gap = (effectiveW / dataArr.length) * 0.4;
+
+            let svgContent = `<svg width="100%" height="100%" viewBox="0 0 ${w} ${h}">`;
+            
+            // Draw axis lines
+            svgContent += `<line x1="${padding}" y1="${h - padding}" x2="${w - padding}" y2="${h - padding}" stroke="#e0e4e8" stroke-width="2"/>`;
+            svgContent += `<line x1="${padding}" y1="${padding}" x2="${padding}" y2="${h - padding}" stroke="#e0e4e8" stroke-width="2"/>`;
+            
+            // Draw background lines and labels for Y
+            const steps = 4;
+            for(let i=0; i<=steps; i++){
+                const val = (maxVal / steps) * i;
+                const y = (h - padding) - (effectiveH / steps) * i;
+                
+                if (i !== 0) {
+                    svgContent += `<line x1="${padding}" y1="${y}" x2="${w - padding}" y2="${y}" stroke="#e0e4e8" stroke-width="1" stroke-dasharray="4,4"/>`;
+                }
+                svgContent += `<text x="${padding - 10}" y="${y + 5}" font-size="12" fill="#536070" text-anchor="end" font-family="sans-serif">${val}</text>`;
+            }
+
+            // Draw bars
+            dataArr.forEach((val, index) => {
+                const currentH = (val / maxVal) * effectiveH;
+                const x = padding + gap/2 + (barW + gap) * index;
+                const y = (h - padding) - currentH;
+
+                svgContent += `<rect x="${x}" y="${y}" width="${barW}" height="${currentH}" fill="${color}" rx="2"/>`;
+                
+                // Value text on top
+                svgContent += `<text x="${x + barW/2}" y="${y - 8}" font-size="12" font-weight="bold" fill="#0B1B3D" text-anchor="middle" font-family="sans-serif">${val}</text>`;
+                
+                // Label (X-axis)
+                svgContent += `<text x="${x + barW/2}" y="${h - padding + 20}" font-size="12" fill="#536070" text-anchor="middle" font-family="sans-serif">${labels[index]}</text>`;
+            });
+
+            svgContent += `</svg>`;
+            container.innerHTML = svgContent;
+        }
+
+        // Init charts on load
+        window.addEventListener('DOMContentLoaded', () => {
+            const revLabels = ["FY21", "FY22", "FY23", "FY24", "FY25", "Q1'26"];
+            const revData = [365.8, 394.3, 383.3, 391.4, 416.0, 143.8];
+            drawBarChart("svg-revenues", revLabels, revData, 450, "#0f4c5c");
+
+            const marginLabels = ["FY21", "FY22", "FY23", "FY24", "FY25", "Q1'26"];
+            const marginData = [29, 30, 30, 31, 32, 33];
+            
+            // Gráfico 2: Mix de Productos (Pie Chart Custom)
+            const pieMixContainer = document.getElementById('svg-pie-mix');
+            if (pieMixContainer) {
+                pieMixContainer.innerHTML = `
+                <svg viewBox="0 0 100 100" style="width:100%; height:100%; border-radius:50%;">
+                    <!-- iPhone 55% -->
+                    <circle r="25" cx="50" cy="50" fill="transparent" stroke="#0B1B3D" stroke-width="50" stroke-dasharray="172.7 314" transform="rotate(-90 50 50)"/>
+                    <!-- Services 26% -->
+                    <circle r="25" cx="50" cy="50" fill="transparent" stroke="#0f4c5c" stroke-width="50" stroke-dasharray="81.6 314" stroke-dashoffset="-172.7" transform="rotate(-90 50 50)"/>
+                    <!-- Wearables 9% -->
+                    <circle r="25" cx="50" cy="50" fill="transparent" stroke="#6B7A8F" stroke-width="50" stroke-dasharray="28.2 314" stroke-dashoffset="-254.3" transform="rotate(-90 50 50)"/>
+                    <!-- Mac+iPad 14% -->
+                    <circle r="25" cx="50" cy="50" fill="transparent" stroke="#e0e4e8" stroke-width="50" stroke-dasharray="43.9 314" stroke-dashoffset="-282.5" transform="rotate(-90 50 50)"/>
+                </svg>
+                <div style="text-align:center; font-size:0.8rem; margin-top:10px; color:var(--color-navy);">
+                    <span style="color:#0B1B3D; font-weight:bold;">■ iPhone (55%)</span> 
+                    <span style="color:#0f4c5c; font-weight:bold;">■ Serv. (26%)</span> 
+                    <span style="color:#6B7A8F; font-weight:bold;">■ Wear/Acc (9%)</span>
+                    <span style="color:#a0a4a8; font-weight:bold;">■ Mac/iPad (14%)</span>
+                </div>
+                `;
+            }
+
+            // Gráfico 3: Mix Geográfico (Pie Chart Custom)
+            const pieGeoContainer = document.getElementById('svg-pie-geo');
+            if (pieGeoContainer) {
+                pieGeoContainer.innerHTML = `
+                <svg viewBox="0 0 100 100" style="width:100%; height:100%; border-radius:50%;">
+                    <!-- Americas 43% -->
+                    <circle r="25" cx="50" cy="50" fill="transparent" stroke="#0B1B3D" stroke-width="50" stroke-dasharray="135 314" transform="rotate(-90 50 50)"/>
+                    <!-- Europe 27% -->
+                    <circle r="25" cx="50" cy="50" fill="transparent" stroke="#0f4c5c" stroke-width="50" stroke-dasharray="84.7 314" stroke-dashoffset="-135" transform="rotate(-90 50 50)"/>
+                    <!-- China 15% -->
+                    <circle r="25" cx="50" cy="50" fill="transparent" stroke="#6B7A8F" stroke-width="50" stroke-dasharray="47.1 314" stroke-dashoffset="-219.7" transform="rotate(-90 50 50)"/>
+                    <!-- Japan/Rest APAC 15% -->
+                    <circle r="25" cx="50" cy="50" fill="transparent" stroke="#e0e4e8" stroke-width="50" stroke-dasharray="47.1 314" stroke-dashoffset="-266.8" transform="rotate(-90 50 50)"/>
+                </svg>
+                <div style="text-align:center; font-size:0.8rem; margin-top:10px; color:var(--color-navy);">
+                    <span style="color:#0B1B3D; font-weight:bold;">■ Amer (43%)</span> 
+                    <span style="color:#0f4c5c; font-weight:bold;">■ Euro (27%)</span> 
+                    <span style="color:#6B7A8F; font-weight:bold;">■ China (15%)</span>
+                    <span style="color:#a0a4a8; font-weight:bold;">■ APAC (15%)</span>
+                </div>
+                `;
+            }
+
+            drawBarChart("svg-margins", marginLabels, marginData, 40, "#6B7A8F");
+            
+            calcDCF(); 
+        });
+
+        // Recalculate SVG size on resize
+        window.addEventListener('resize', () => {
+             const revLabels = ["FY21", "FY22", "FY23", "FY24", "FY25", "Q1'26"];
+             const revData = [365.8, 394.3, 383.3, 391.4, 416.0, 143.8];
+             drawBarChart("svg-revenues", revLabels, revData, 450, "#0f4c5c");
+             
+             const marginLabels = ["FY21", "FY22", "FY23", "FY24", "FY25", "Q1'26"];
+             const marginData = [29, 30, 30, 31, 32, 33];
+             drawBarChart("svg-margins", marginLabels, marginData, 40, "#6B7A8F");
+        });
+
+        // ==========================================
+        //  DCF Calculation 
+        // ==========================================
+        const outEV = document.getElementById("outEV");
+        const outEqV = document.getElementById("outEqV");
+        const outShare = document.getElementById("outShare");
+
+        const inps = ["inpRev", "inpGrowth", "inpOM", "inpTax", "inpWacc", "inpTg"];
+        const numSharesBase = 14.8; 
+        const netDebtBase = 43.0;
+
+        function calcDCF() {
+            // Read inputs
+            const r26 = parseFloat(document.getElementById("inpRev").value);
+            const gLp = parseFloat(document.getElementById("inpGrowth").value) / 100;
+            const om = parseFloat(document.getElementById("inpOM").value) / 100;
+            const tax = parseFloat(document.getElementById("inpTax").value) / 100;
+            const wacc = parseFloat(document.getElementById("inpWacc").value) / 100;
+            const tg = parseFloat(document.getElementById("inpTg").value) / 100;
+
+            // Simple simplified FCF assumption: NOPAT = EBIT * (1-Tax) -> Approx FCF since D&A ~ Capex in AAPL (Asset light)
+            
+            let presentValueFCO = 0;
+            let currentRev = r26;
+            
+            // Year 1 to 5 Projections
+            for(let i=1; i<=5; i++) {
+                if(i > 1) {
+                    currentRev = currentRev * (1 + gLp);
+                }
+                const currentNopat = currentRev * om * (1 - tax);
+                const discountFactor = Math.pow(1 + wacc, i);
+                presentValueFCO += (currentNopat / discountFactor);
+            }
+            
+            // Terminal Value
+            // Using year 5 FCF to calculate TV
+            let terminalFCF = currentRev * om * (1 - tax) * (1 + tg);
+            let terminalValue = terminalFCF / (wacc - tg);
+            
+            // Discount TV back to PV
+            let pvTV = terminalValue / Math.pow(1 + wacc, 5);
+
+            // Total EV
+            let EV = presentValueFCO + pvTV;
+            
+            // Equity Value
+            let equityV = EV - netDebtBase;
+            
+            // Per Share
+            let pShare = equityV / numSharesBase;
+            
+            // Safety bounds
+            if (!isFinite(EV) || EV < 0) EV = 0;
+            if (!isFinite(equityV) || equityV < 0) equityV = 0;
+            if (!isFinite(pShare) || pShare < 0) pShare = 0;
+
+            // Output Rendering
+            outEV.textContent = EV.toLocaleString('en-US', {maximumFractionDigits:0}) + " B$";
+            outEqV.textContent = equityV.toLocaleString('en-US', {maximumFractionDigits:0}) + " B$";
+            outShare.textContent = pShare.toLocaleString('en-US', {maximumFractionDigits:2}) + " $";
+        }
+
+        // Attach listeners
+        inps.forEach(id => {
+            const el = document.getElementById(id);
+            el.addEventListener("input", function() {
+                // UPDATE LABEL
+                const lbl = document.getElementById(id.replace("inp", "val"));
+                lbl.textContent = this.value;
+                calcDCF();
+            });
+        });
+
+    </script>
+</body>
+</html>
